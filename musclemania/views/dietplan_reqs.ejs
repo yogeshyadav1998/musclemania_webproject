@@ -1,0 +1,64 @@
+<%- include("partials/header")%>
+
+<body>
+        <nav class="navbar  navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand -->
+            <a class="navbar-brand " href="/"><img width="100px"  src="https://cdn3.f-cdn.com/contestentries/1172874/26002129/59fa2dd71e199_thumb900.jpg" alt=""></a>
+        
+            <!-- Links -->
+            <ul class="navbar-nav">
+
+            <!-- Dropdown -->
+             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Workouts</a>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="/chest">Chest</a>
+                <a class="dropdown-item" href="#">Triceps</a>
+                <a class="dropdown-item" href="#">Back</a>
+                <a class="dropdown-item" href="#">Biceps</a>
+                <a class="dropdown-item" href="#">Shoulders</a>
+                <a class="dropdown-item" href="#">legs</a>
+                <a class="dropdown-item" href="#">Core</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dietplan_reqs">Dietplan requests</a>
+             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+          
+           
+            </ul>
+        </nav>
+         <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Hello, Fitness Lovers</h1>
+          <p class="lead">Here you can request dietplan and find maching dietplan which fits in your schedule.</p>
+          <a href="/dietplan_reqs/newdietplan_req" class="btn btn-secondary">request new dietplan</a>
+        </div>
+        </div>
+        
+    <div class="container">
+    <div class="row">      
+            
+    <%dietplans.forEach(function(dietplan){ %>
+      
+        <div class="col col-lg-4">
+            <div class="card text-center text-white bg-dark border-dark  mb-4" >
+            <div class="card-header"><%-dietplan.name%></div>
+            <div class="card-body text-white bg-secondary">
+                <h5 class="card-title">for <%-dietplan.profession%></h5>
+                <h6>Age {yrs}: <%-dietplan.age%><h6>
+                <h6>Weight (kgs): <%-dietplan.weight%></h6>
+                <h6>Height (cms): <%-dietplan.height%></h6>
+                <a href="/dietplan_reqs/<%= dietplan._id %>" class="btn btn-dark" >show dietplan</a>
+            </div>
+        </div>
+        </div>
+        
+    <%});%>
+    </div>
+    </div>>
+</body>

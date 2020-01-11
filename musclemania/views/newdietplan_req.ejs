@@ -1,0 +1,62 @@
+<%- include("partials/header")%>
+<style>
+.instruction{
+    padding: 3% 0% 3% 0%;
+    background-color: rgb(53, 51, 51);
+    color: rgb(240, 240, 226);
+    font: 1em sans-serif;
+}
+.form{
+    padding-top: 4%;
+}
+</style>
+<body>
+<div class="instruction">
+    <h2 class="container">Enter your details - </h2>
+</div>
+<div class="container form">
+    <form action="/dietplan_reqs" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">NAME</label>
+              <input type="text" name="name" class="form-control"  placeholder="name">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputPassword4">AGE</label>
+              <input type="number" name="age" class="form-control"  placeholder="age(in years)">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputCity">HEIGHT</label>
+              <input type="number" name= "height" class="form-control"  placeholder="height(in cms)">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">WEIGHT</label>
+                <input type="number" name="weight" class="form-control" placeholder="weight(in kgs)"> 
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputZip">PROFESSION</label>
+              <input type="text" name= "profession" class="form-control"  placeholder="profession">
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="posture">Posture</label>
+              <input type="text" name="imgurl" class="form-control" placeholder="image url">
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                accept all t&c
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <a href="/dietplan_reqs" class="btn btn-secondary">Go Back</a>
+</div>
+
+    
+</body>
