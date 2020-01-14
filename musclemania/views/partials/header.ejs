@@ -2,7 +2,61 @@
 <head>
   <title>MUSCLEMANIA</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
+
+<body>
+  
+  <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a class="navbar-brand " href="/"><img width="100px"  src="https://cdn3.f-cdn.com/contestentries/1172874/26002129/59fa2dd71e199_thumb900.jpg" alt=""></a>
+    
+      <ul class="nav navbar-nav mr-auto ">
+      <!-- Dropdown -->
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Workouts</a>
+          <div class="dropdown-menu">
+          <a class="dropdown-item" href="/chest">Chest</a>
+          <a class="dropdown-item" href="#">Triceps</a>
+          <a class="dropdown-item" href="#">Back</a>
+          <a class="dropdown-item" href="#">Biceps</a>
+          <a class="dropdown-item" href="#">Shoulders</a>
+          <a class="dropdown-item" href="#">legs</a>
+          <a class="dropdown-item" href="#">Core</a>
+          </div>
+        </li>
+      <!-- Links -->
+      <li class="nav-item">
+          <a class="nav-link" href="/dietplan_reqs">Dietplan Requests</a>
+      </li>
+
+      <li class="nav-item ">
+          <a class="nav-link" href="#">About</a>
+      </li>
+      </ul>
+  
+      <ul class="nav navbar-nav ">
+      <% if(!currentuser){%>
+          <li class="nav-item ">
+            <a class="nav-link" href="/register">Sign up</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+          </li>
+      <%  } else{%>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%-currentuser.username%></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      <% }%>
+      </ul>
+    </div>  
+  </nav>
+</body>
