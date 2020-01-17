@@ -7,23 +7,16 @@ var bodyparser = require("body-parser");
 var mongoose = require("mongoose");
 var session = require("express-session");
 user = require("./models/user");
+dietplan_req = require("./models/dietplan_req");
+comment = require("./models/comment")
+seedDB = require("./seeds");
+
+seedDB();
 
 // mongoose config
 mongoose.connect('mongodb://localhost:27017/musclemania', {useNewUrlParser: true});
 app.use(bodyparser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
-
-var dietplan_reqSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    weight: Number,
-    height: Number,
-    profession: String,
-    imgurl: String,
-    dietplan: String
-});
-var dietplan_req = mongoose.model("dietplan_req", dietplan_reqSchema);
 
 // passport configuration
 app.use(session({
@@ -108,7 +101,7 @@ app.get("/dietplan_reqs/newdietplan_req",function(req,res){
 });
 
 app.get("/dietplan_reqs/:id",function(req,res){
-    dietplan_req.findById(req.params.id,function(err,dietplan_req){
+    dietplan_req.findById(req.params.id).populate("comments").exec(function(err,dietplan_req){
         if(err){
             console.log(err)
         }
@@ -117,6 +110,45 @@ app.get("/dietplan_reqs/:id",function(req,res){
         }
     })
 });
+
+
+app.get("/dietplan_reqs/:id/newcomment",function(req,res){
+    dietplan_req.findById(req.params.id,function(err,dietplan_req){
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.render("newcomment", {dietplan_req: dietplan_req});
+        }
+    })
+});
+
+app.post("/dietplan_reqs/:id/comments",function(req, res){
+    dietplan_req.findById(req.params.id,function(err,dietplan_req){
+        if(err){
+            console.log(err)
+        }
+        else{
+            comment.create(req.body.comment,function(err, comment){
+                if(err){
+                    console.log(err)
+                }
+                else{
+                    dietplan_req.comments.push(comment);
+                    dietplan_req.save();
+                    res.redirect("/dietplan_reqs/"+ dietplan_req.id);
+                }
+            })
+        }
+    })
+})
+
+
+
+
+
+
+
 
 app.get("/register",function(req, res){
     res.render("register")
@@ -150,11 +182,6 @@ app.get("/logout",function(req, res){
     req.logout();
     res.redirect("/");
 });
-
-
-
-
-
 
 
 

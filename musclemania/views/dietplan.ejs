@@ -1,3 +1,18 @@
-<h1>dietplan ...</h1>
+<%- include("partials/header")%>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>dietplan ...</h1>
 
-<h3><%- dietplan_req.dietplan%></h3>
+            <h3><%- dietplan_req.dietplan %></h3>
+        </div>
+        <h3>COMMENTS-</h3>
+        <% dietplan_req.comments.forEach(function(comment){%>
+           <div class="card" style="background-color: rgb(209, 213, 214);"> 
+               <p class="card-body"><strong><%- comment.author%></strong> - <%- comment.text %></p>
+           </div>
+           <br>
+        <% })%>
+        <a href="/dietplan_reqs/<%= dietplan_req._id %>/newcomment" class="btn btn-dark" >add new comment</a>
+    </div>
+</body>
