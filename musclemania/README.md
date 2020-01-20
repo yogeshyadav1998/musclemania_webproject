@@ -1,8 +1,10 @@
 # musclemania_webproject
 
-It is a website where you can find workout exercises for different muscles.
+It is a multipage website where -
 
-You can request dietplan according to your physic.
+- you can find workout exercises for different muscles.
+
+- You can request dietplan according to your physic.
 
 frontend -- html, css, bootstrap-v4
 
